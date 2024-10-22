@@ -1,0 +1,4 @@
+dataset/
+__pycache__
+data/stl10_binary.tar.gz
+notebook.ipynb

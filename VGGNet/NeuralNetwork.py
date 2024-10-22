@@ -1,10 +1,10 @@
 import torch
-from torch.nn import nn
-from constants import VGG16
+import torch.nn as nn
+from util.constants import VGG16
 
 
 class VGGNet(nn.Module):
-    def __init__(self, model=VGG16, in_channels=3, num_classes=1000, init_weights=True):
+    def __init__(self, model=VGG16, in_channels:int=3, num_classes:int=1000, init_weights:bool=True):
         super(VGGNet, self).__init__()
 
         self.in_channels = in_channels
@@ -17,7 +17,7 @@ class VGGNet(nn.Module):
                                     nn.ReLU(),
                                     nn.Dropout(p=0.5),
                                     nn.Linear(in_features=4096, out_features=num_classes))
-
+        
         if init_weights == True:
             self._initialize_weights()
 
@@ -69,3 +69,7 @@ class VGGNet(nn.Module):
                                         stride=(2, 2))]
         
         return nn.Sequential(*layers)
+
+
+# if __name__ == '__main__':
+#     pass
